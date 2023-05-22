@@ -56,10 +56,10 @@ export function useSwitchTheme() {
   // 判断是否处于客户端环境
   if (typeof window !== "undefined") {
     let getUrlParam = () => {
-      // return window.location.href.split("=").length == 2
-      //   ? window.location.href.split("=")[1].split("&")[0]
-      //   : "";
-      return window.location.href.split("=").length == 2 ? "123" : "";
+      return window.location.href.split("=").length == 2
+        ? window.location.href.split("=")[1].split("&")[0]
+        : "";
+    // return window.location.href.split("=").length == 2 ? "123" : "";
     };
 
     if (getUrlParam() && getUrlParam() != accessStore.accessCode) {
