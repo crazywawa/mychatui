@@ -483,46 +483,52 @@ export function Chat() {
     if (userInput.trim() === "") return;
 
     interface RequestCode {
-      code:string | null;
+      code: string | null;
     }
     interface RequestBody {
       method: "get" | "post" | "put" | "delete";
       body?: string;
-      headers:any
+      headers: any;
     }
     let RequestCode: RequestCode = {
-      code: accessStore.accessCode
+      code: accessStore.accessCode,
     };
-    
+
     let RequestBody: RequestBody = {
       method: "post",
-      body:RequestCode&&JSON.stringify(RequestCode),
+      body: RequestCode && JSON.stringify(RequestCode),
       headers: {
-        "Content-Type": "application/json"
-      }
+        "Content-Type": "application/json",
+      },
     };
-    let baseUrl ='http://pay2.pkucode.com/prod-api' 
-    fetch(baseUrl+"/wechat/purchased/check", RequestBody)
+    let baseUrl = "https://pay2.pkucode.com/prod-api";
+    fetch(baseUrl + "/wechat/purchased/check", RequestBody)
       .then((res) => res.json())
-      .then((res:any) => {
-        if(res.code==500){
-          fetch(baseUrl+"/wechat/purchased/check/info", RequestBody)
-          .then((resp) => resp.json())
-          .then((resp:any) => {
-            let url:string='http://baidu.com'
-            if(resp.code==200){
-              if(resp.data.codeType=='2'){
-                alert('您购买的5次对话额度已用完，如需继续使用，请前往 '+url+' 购买')
-              }else{
-                alert('您购买的链接已到期，如需继续使用，请前往 '+url+' 购买')
+      .then((res: any) => {
+        if (res.code == 500) {
+          fetch(baseUrl + "/wechat/purchased/check/info", RequestBody)
+            .then((resp) => resp.json())
+            .then((resp: any) => {
+              let url: string = "http://baidu.com";
+              if (resp.code == 200) {
+                if (resp.data.codeType == "2") {
+                  alert(
+                    "您购买的5次对话额度已用完，如需继续使用，请前往 " +
+                      url +
+                      " 购买",
+                  );
+                } else {
+                  alert(
+                    "您购买的链接已到期，如需继续使用，请前往 " + url + " 购买",
+                  );
+                }
+              } else if (res.msg.indexOf("失效") != -1) {
+                alert(`${res.msg}，如需继续使用，请前往 ${url} 购买`);
+              } else {
+                alert(`${res.msg}`);
               }
-            }else if(res.msg.indexOf('失效')!=-1){
-              alert(`${res.msg}，如需继续使用，请前往 ${url} 购买`)
-            }else{
-              alert(`${res.msg}`)
-            }
-          })
-        }else{
+            });
+        } else {
           setIsLoading(true);
           chatStore.onUserInput(userInput).then(() => setIsLoading(false));
           setBeforeInput(userInput);
@@ -531,8 +537,7 @@ export function Chat() {
           if (!isMobileScreen) inputRef.current?.focus();
           setAutoScroll(true);
         }
-        
-      })
+      });
   };
 
   // stop response

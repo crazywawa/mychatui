@@ -14,7 +14,7 @@ import { getCSSVar, useMobileScreen } from "../utils";
 import dynamic from "next/dynamic";
 import { Path, SlotID } from "../constant";
 import { ErrorBoundary } from "./error";
-import { ModalConfigValidator,useAccessStore,ModelConfig } from "../store";
+import { ModalConfigValidator, useAccessStore, ModelConfig } from "../store";
 import {
   HashRouter as Router,
   Routes,
@@ -54,15 +54,22 @@ export function useSwitchTheme() {
   const resetConfig = config.reset;
   const accessStore = useAccessStore();
   // 判断是否处于客户端环境
-  if (typeof window !== 'undefined') {
+  if (typeof window !== "undefined") {
     let getUrlParam = () => {
-      return window.location.href.split('=').length==2?window.location.href.split('=')[1].split('&')[0]:''
+      return window.location.href.split("=").length == 2
+        ? window.location.href.split("=")[1].split("&")[0]
+        : "";
     };
-    
-    if(getUrlParam()&&(getUrlParam()!=accessStore.accessCode)){
-      let codeType=window.location.href.split('=').length==2?window.location.href.split('=')[1].split('&')[1]:''
-      if(codeType=='1'||codeType=='2'){
-        alert('已为您配置gpt4模型，需要您前往 “设置-模型 (model)” 中选择<gpt-4模型>')
+
+    if (getUrlParam() && getUrlParam() != accessStore.accessCode) {
+      let codeType =
+        window.location.href.split("=").length == 2
+          ? window.location.href.split("=")[1].split("&")[1]
+          : "";
+      if (codeType == "1" || codeType == "2") {
+        alert(
+          "已为您配置gpt4模型，需要您前往 “设置-模型 (model)” 中选择<gpt-4模型>",
+        );
       }
       accessStore.updateCode(getUrlParam());
       // ModalConfigValidator.model(
@@ -89,11 +96,11 @@ export function useSwitchTheme() {
   //     body?: string;
   //     headers:any
   //   }
-  
+
   //   let RequestCode: RequestCode = {
   //     code: accessStore.accessCode
   //   };
-    
+
   //   let RequestBody: RequestBody = {
   //     method: "post",
   //     body:RequestCode && JSON.stringify(RequestCode),
@@ -101,7 +108,7 @@ export function useSwitchTheme() {
   //       "Content-Type": "application/json"
   //     }
   //   };
-  //   let baseUrl ='http://pay2.pkucode.com/prod-api' 
+  //   let baseUrl ='https://pay2.pkucode.com/prod-api'
   //   fetch(baseUrl+"/wechat/purchased/check/info", RequestBody)
   //     .then((res) => res.json())
   //     .then((res:any) => {
@@ -187,7 +194,7 @@ function Screen() {
   );
 }
 
-export function Home() {  
+export function Home() {
   useSwitchTheme();
 
   if (!useHasHydrated()) {

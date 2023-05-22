@@ -470,7 +470,7 @@ export function Settings() {
           </ListItem>
         </List>
 
-{/* 访问密码 */}
+        {/* 访问密码 */}
         <List>
           {!enabledAccessControl ? (
             <ListItem
@@ -489,7 +489,7 @@ export function Settings() {
           ) : (
             <></>
           )}
-{/* API key */}
+          {/* API key */}
           {!accessStore.hideUserApiKey ? (
             <ListItem
               title={Locale.Settings.Token.Title}
