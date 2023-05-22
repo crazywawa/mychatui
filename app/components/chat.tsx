@@ -514,7 +514,7 @@ export function Chat() {
               if (resp.code == 200) {
                 if (resp.data.codeType == "2") {
                   alert(
-                    "您购买的10次对话额度已用完，如需继续使用，请前往 " +
+                    "您购买的对话额度已用完，如需继续使用，请前往 " +
                       url +
                       " 购买",
                   );
