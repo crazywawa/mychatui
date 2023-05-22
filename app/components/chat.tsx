@@ -509,7 +509,8 @@ export function Chat() {
           fetch(baseUrl + "/wechat/purchased/check/info", RequestBody)
             .then((resp) => resp.json())
             .then((resp: any) => {
-              let url: string = "http://baidu.com";
+              //let url: string = "http://baidu.com";
+              let url: string = "https://pay3.pkucode.com/";
               if (resp.code == 200) {
                 if (resp.data.codeType == "2") {
                   alert(
