@@ -62,17 +62,17 @@ export function useSwitchTheme() {
     // return window.location.href.split("=").length == 2 ? "123" : "";
     };
 
-    if (getUrlParam() && getUrlParam() != accessStore.accessCode) {
-      let codeType =
-        window.location.href.split("=").length == 2
-          ? window.location.href.split("=")[1].split("&")[1]
-          : "";
-      if (codeType == "1" || codeType == "2") {
-        alert(
-          "已为您配置gpt4模型，需要您前往 “设置-模型 (model)” 中选择<gpt-4模型>",
-        );
-      }
-       accessStore.updateCode(getUrlParam());
+    // if (getUrlParam() && getUrlParam() != accessStore.accessCode) {
+    //   let codeType =
+    //     window.location.href.split("=").length == 2
+    //       ? window.location.href.split("=")[1].split("&")[1]
+    //       : "";
+    //   if (codeType == "1" || codeType == "2") {
+    //     alert(
+    //       "已为您配置gpt4模型，需要您前往 “设置-模型 (model)” 中选择<gpt-4模型>",
+    //     );
+    //   }
+       //accessStore.updateCode(getUrlParam());
       // ModalConfigValidator.model(
       //   'gpt-4',
       // )
