@@ -97,8 +97,7 @@ export function limitNumber(
 
 export function limitModel(name: string) {
   return ALL_MODELS.some((m) => m.name === name && m.available)
-    ? name
-    : ALL_MODELS[1].name;
+    ? name: ALL_MODELS[1].name;
 }
 
 export const ModalConfigValidator = {
@@ -142,7 +141,6 @@ export const useAppConfig = create<ChatConfigStore>()(
         state.modelConfig.historyMessageCount = 4;
         state.modelConfig.compressMessageLengthThreshold = 1000;
         state.dontShowMaskSplashScreen = false;
-
         return state;
       },
     },
