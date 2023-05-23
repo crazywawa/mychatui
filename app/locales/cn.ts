@@ -149,7 +149,7 @@ const cn = {
     AccessCode: {
       Title: "访问密码",
       SubTitle: "已开启加密访问",
-      Placeholder: "请输入访问密码",
+      Placeholder: "123",
     },
     Model: "模型 (model)",
     Temperature: {
