@@ -491,7 +491,7 @@ export function Chat() {
       headers: any;
     }
     let RequestCode: RequestCode = {
-      code: '123',
+      code: accessStore.accessCode,
     };
 
     let RequestBody: RequestBody = {

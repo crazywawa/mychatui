@@ -478,7 +478,7 @@ export function Settings() {
               subTitle={Locale.Settings.AccessCode.SubTitle}
             >
               <PasswordInput
-                value={'123'}
+                value={accessStore.accessCode}
                 type="text"
                 placeholder={Locale.Settings.AccessCode.Placeholder}
                 onChange={(e) => {
