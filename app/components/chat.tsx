@@ -510,7 +510,7 @@ export function Chat() {
             .then((resp) => resp.json())
             .then((resp: any) => {
               //let url: string = "http://baidu.com";
-              let url: string = "https://pay3.pkucode.com/";
+              let url: string = "https://pay.pkucode.com/";
               if (resp.code == 200) {
                 if (resp.data.codeType == "2") {
                   alert(
