@@ -46,6 +46,7 @@ const makeRequestParam = (
 function getHeaders() {
   const accessStore = useAccessStore.getState();
   let headers: Record<string, string> = {};
+  let accessCode='123'
 
   const makeBearer = (token: string) => `Bearer ${token.trim()}`;
   const validString = (x: string) => x && x.length > 0;
@@ -55,10 +56,10 @@ function getHeaders() {
     headers.Authorization = makeBearer(accessStore.token);
   } else if (
     accessStore.enabledAccessControl() &&
-    validString(accessStore.accessCode)
+    validString(accessCode)
   ) {
     headers.Authorization = makeBearer(
-      ACCESS_CODE_PREFIX + accessStore.accessCode,
+      ACCESS_CODE_PREFIX + accessCode,
     );
   }
 

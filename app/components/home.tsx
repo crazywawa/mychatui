@@ -72,7 +72,7 @@ export function useSwitchTheme() {
           "已为您配置gpt4模型，需要您前往 “设置-模型 (model)” 中选择<gpt-4模型>",
         );
       }
-       //accessStore.updateCode(getUrlParam());
+      accessStore.updateCode(getUrlParam());
       // ModalConfigValidator.model(
       //   'gpt-4',
       // )
