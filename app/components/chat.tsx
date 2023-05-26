@@ -501,7 +501,7 @@ export function Chat() {
         "Content-Type": "application/json",
       },
     };
-    let baseUrl = "https://pay2.pkucode.com/prod-api";
+    let baseUrl = "https://pay3.pkucode.com/prod-api";
     fetch(baseUrl + "/wechat/purchased/check", RequestBody)
       .then((res) => res.json())
       .then((res: any) => {
